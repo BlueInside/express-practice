@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', function (req, res) {
+const myLogger = (req, res, next) => {
+  console.log('Logged');
+  next();
+};
+app.get('/', myLogger, function (req, res) {
   res.send('Hello World!');
 });
 
